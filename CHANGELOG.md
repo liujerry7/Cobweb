@@ -9,6 +9,8 @@ date, and start a new empty **Unreleased** above it.
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-20
+
 ### Added
 
 - Repo setup: Prettier, EditorConfig and the `node:test` runner.
