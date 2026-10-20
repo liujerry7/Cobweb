@@ -9,6 +9,10 @@ date, and start a new empty **Unreleased** above it.
 
 ## [Unreleased]
 
+### Added
+
+- MIT license.
+
 ## [0.1.0] - 2026-10-20
 
 ### Added

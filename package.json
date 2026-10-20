@@ -5,6 +5,7 @@
   "type": "module",
   "description": "A plain-JavaScript web game engine: game-agnostic modules any browser game can build on.",
   "repository": "github:liujerry7/Cobweb",
+  "license": "MIT",
   "exports": "./src/index.js",
   "scripts": {
     "test": "node --test",

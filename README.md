@@ -4,13 +4,10 @@ A plain-JavaScript game engine for the browser: the game-agnostic parts any web 
 (math, timing, input, rendering helpers, randomness, storage), written by hand as a learning
 project and shared by games that live in their own repos.
 
-It plays the role for web games that Jumble plays for the C++ games: the engine is its own repo,
-and a game checks it out alongside.
+The engine is its own repo, and a game depends on a tagged release:
 
-```
-D:/GameDev/
-  Cobweb/       ← this repo
-  Purgatory/    ← LSAT Game Night (a game that will draw on it)
+```json
+"dependencies": { "cobweb": "github:liujerry7/Cobweb#v0.1.0" }
 ```
 
 ## Rules
@@ -40,3 +37,12 @@ recommended in `.vscode/extensions.json`).
 | ------- | ------------------------------------ |
 | `src/`  | engine modules, one concept per file |
 | `test/` | `node:test` tests, one per module    |
+
+## Contributing
+
+This is a personal learning project, so issues and pull requests aren't being accepted. You're
+welcome to fork it.
+
+## License
+
+[MIT](LICENSE)
