@@ -1,0 +1,18 @@
+{
+  "name": "web-engine",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A plain-JavaScript web game engine: game-agnostic modules any browser game can build on.",
+  "scripts": {
+    "test": "node --test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "prettier": "3.9.10"
+  }
+}

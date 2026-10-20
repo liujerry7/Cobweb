@@ -1,0 +1,2 @@
+# LF everywhere, matching Prettier's endOfLine, so Windows checkouts never show whole-file diffs.
+* text=auto eol=lf
