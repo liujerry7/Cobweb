@@ -1,4 +1,4 @@
-# web-engine
+# Cobweb
 
 A plain-JavaScript game engine for the browser: the game-agnostic parts any web game needs
 (math, timing, input, rendering helpers, randomness, storage), written by hand as a learning
@@ -9,7 +9,7 @@ and a game checks it out alongside.
 
 ```
 D:/GameDev/
-  web-engine/   ← this repo
+  Cobweb/       ← this repo
   Purgatory/    ← LSAT Game Night (a game that will draw on it)
 ```
 

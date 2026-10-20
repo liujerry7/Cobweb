@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-A hand-written, plain-JavaScript web game engine (see `README.md`). Its owner is **learning
+**Cobweb** is a hand-written, plain-JavaScript web game engine (see `README.md`). Its owner is **learning
 programming by writing it**.
 
 ## Working here
