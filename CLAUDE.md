@@ -18,6 +18,19 @@ programming by writing it**.
 - **Game-agnostic.** No game, brand or product names in this repo.
 - Prettier formats everything (`.prettierrc.json`); don't hand-format against it.
 
+## Commits and releases
+
+- **Conventional Commits**: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`, `chore:`, `ci:`,
+  then an imperative summary (`feat: add Vector2 dot product`). `!` after the type marks a
+  breaking change (`feat!: rename Vector2.len to length`).
+- Commit to `main` freely; CI (`.github/workflows/ci.yml`) must stay green. Big or experimental
+  work goes on a short-lived, plainly named branch and a pull request.
+- Every user-visible change adds a line under **Unreleased** in `CHANGELOG.md`.
+- Releases follow SemVer: bump `version` in `package.json`, date the changelog section, commit
+  `chore: release vX.Y.Z`, tag `vX.Y.Z`, push the tag, publish a GitHub Release. Never move a
+  pushed tag. The owner is practising releases: walk them through it rather than doing it.
+- The public API is whatever `src/index.js` exports; everything else is internal.
+
 ## Commands
 
 ```bash
