@@ -1,0 +1,14 @@
+{
+  // Compiles src/ into dist/ as plain .js plus .d.ts type files: what a game imports.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "types": []
+  },
+  "include": ["src"]
+}

@@ -1,4 +1,5 @@
-# Runs on every push and pull request: the commit gets a ✅ only if tests and formatting pass.
+# Runs on every push and pull request: the commit gets a ✅ only if formatting, types, tests and
+# the build all pass.
 name: CI
 
 on:
@@ -22,5 +23,11 @@ jobs:
       - name: Formatting
         run: npm run format:check
 
+      - name: Types
+        run: npm run typecheck
+
       - name: Tests
         run: npm test
+
+      - name: Build
+        run: npm run build

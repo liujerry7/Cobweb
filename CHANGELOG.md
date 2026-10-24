@@ -13,6 +13,11 @@ date, and start a new empty **Unreleased** above it.
 
 - MIT license.
 
+### Changed
+
+- The engine is written in TypeScript (types only, `erasableSyntaxOnly`). Games import the
+  compiled `dist/`, which npm builds on install; Node runs the `.ts` tests directly.
+
 ## [0.1.0] - 2026-10-20
 
 ### Added

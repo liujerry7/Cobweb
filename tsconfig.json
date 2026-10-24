@@ -1,0 +1,28 @@
+{
+  // Type-checks everything (src and test) without writing files: `npm run typecheck`.
+  // tsconfig.build.json extends this to compile src/ into dist/.
+  "compilerOptions": {
+    "target": "es2023",
+    "lib": ["es2023", "dom"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+
+    // Types only: no enums, namespaces or parameter properties, so every file is plain JavaScript
+    // once the annotations are removed. Node runs .ts files directly by stripping them.
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    // Imports name the real file ("./vec2.ts"), as Node requires; the build rewrites them to .js.
+    "rewriteRelativeImportExtensions": true,
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "exactOptionalPropertyTypes": true,
+
+    "types": ["node"],
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": ["src", "test"]
+}

@@ -3,19 +3,33 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "A plain-JavaScript web game engine: game-agnostic modules any browser game can build on.",
+  "description": "A TypeScript web game engine: game-agnostic modules any browser game can build on.",
   "repository": "github:liujerry7/Cobweb",
   "license": "MIT",
-  "exports": "./src/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
     "test": "node --test",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "prepare": "npm run build"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22.18"
   },
   "devDependencies": {
-    "prettier": "3.9.10"
+    "@types/node": "24.19.2",
+    "prettier": "3.9.10",
+    "typescript": "7.0.2"
   }
 }

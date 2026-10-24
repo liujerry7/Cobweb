@@ -1,7 +1,7 @@
 # CLAUDE.md
 
-**Cobweb** is a hand-written, plain-JavaScript web game engine (see `README.md`). Its owner is **learning
-programming by writing it**.
+**Cobweb** is a hand-written TypeScript web game engine (see `README.md`, whose Rules and
+Conventions sections apply here). Its owner is **learning programming by writing it**.
 
 ## Working here
 
@@ -29,11 +29,13 @@ programming by writing it**.
 - Releases follow SemVer: bump `version` in `package.json`, date the changelog section, commit
   `chore: release vX.Y.Z`, tag `vX.Y.Z`, push the tag, publish a GitHub Release. Never move a
   pushed tag. The owner is practising releases: walk them through it rather than doing it.
-- The public API is whatever `src/index.js` exports; everything else is internal.
+- The public API is whatever `src/index.ts` exports; everything else is internal.
 
 ## Commands
 
 ```bash
-npm test               # node --test
+npm test               # node --test (runs .ts directly)
+npm run typecheck      # tsc --noEmit over src and test
+npm run build          # src → dist
 npm run format:check   # Prettier check
 ```
