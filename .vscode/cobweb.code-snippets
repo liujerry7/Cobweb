@@ -2,7 +2,7 @@
   "Section divider": {
     "scope": "typescript,javascript",
     "prefix": "divider",
-    "body": "// ---------------------------------------------------------------- ${1:section}",
-    "description": "A comment line that starts a section of a module",
+    "body": "// ---------------------------------------------------------------------------------------------------------------------",
+    "description": "A comment line, to the 120 ruler, that starts a section of a module",
   },
 }
