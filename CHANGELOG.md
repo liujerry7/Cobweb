@@ -12,6 +12,8 @@ date, and start a new empty **Unreleased** above it.
 ### Added
 
 - MIT license.
+- `Vec2`, a 2D vector as plain immutable data: arithmetic, length, distance and angles, rotation,
+  normalizing, clamping, reflecting, projecting, lerp, min/max, rounding and comparison.
 
 ### Changed
 
