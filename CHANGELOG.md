@@ -14,6 +14,8 @@ date, and start a new empty **Unreleased** above it.
 - MIT license.
 - `Vec2`, a 2D vector as plain immutable data: arithmetic, length, distance and angles, rotation,
   normalizing, clamping, reflecting, projecting, lerp, min/max, rounding and comparison.
+- `Rect`, an axis-aligned rectangle as plain immutable data: making from corners, center or points, edges and corners,
+  moving and resizing, point and rect containment, intersection, union, clamping and comparison.
 
 ### Changed
 
