@@ -7,7 +7,7 @@ shared by games that live in their own repos.
 The engine is its own repo, and a game depends on a tagged release:
 
 ```json
-"dependencies": { "cobweb": "github:liujerry7/Cobweb#v0.1.0" }
+"dependencies": { "cobweb": "github:liujerry7/Cobweb#v0.2.0" }
 ```
 
 npm builds `dist/` (plain `.js` plus `.d.ts` types) when it installs, so a game imports plain
