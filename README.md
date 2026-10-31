@@ -30,7 +30,13 @@ JavaScript: `import { Vec2 } from "cobweb"`.
 
 - Files and folders are lowercase kebab-case (`vec2.ts`, `key-state.ts`); tests mirror them under
   `test/` as `<name>.test.ts`.
-- Functions and variables are camelCase, types are PascalCase, constants are UPPER_SNAKE.
+- Functions and variables are camelCase, types are PascalCase, constants are UPPER_SNAKE. A
+  constant is a value fixed in the source and the same on every run (`ZERO`, `BROWSER`); a `const`
+  computed or looked up at run time is still camelCase.
+- A module reads top to bottom: imports, types, constants, then exported functions in sections
+  split by the divider (making, reading, changing, comparing), then private helpers.
+- One-off bookings are `requestX` / `cancelX` and return an `XId`; ongoing processes are
+  `start` / `stop` and return a handle; listeners are `addX` / `removeX`.
 - Named exports only, no `export default`. `src/index.ts` re-exports each type module as a
   namespace (`export * as Vec2 from "./vec2.ts"`).
 - Relative imports name the real file, `.ts` included; the build rewrites them to `.js`.

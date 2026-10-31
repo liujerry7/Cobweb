@@ -12,7 +12,7 @@ date, and start a new empty **Unreleased** above it.
 ### Added
 
 - `Clock`, a fixed-timestep clock as plain immutable data: steps per frame, a cap on long frames, time scale, pausing
-  and an interpolation alpha
+  and an interpolation alpha.
 
 ## [0.2.0] - 2026-10-28
 
