@@ -13,6 +13,8 @@ date, and start a new empty **Unreleased** above it.
 
 - `Clock`, a fixed-timestep clock as plain immutable data: steps per frame, a cap on long frames, time scale, pausing
   and an interpolation alpha.
+- `Ticker`, which drives a game's `update` and `render` from a `Clock` once per animation frame: start and stop,
+  pause, resume and time scale, with a swappable `Scheduler` so it runs without a browser in tests.
 
 ## [0.2.0] - 2026-10-28
 
