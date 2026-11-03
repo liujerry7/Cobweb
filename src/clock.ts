@@ -8,7 +8,7 @@ export type Clock = {
   readonly ticks: number;
 };
 
-export type Advance = {
+export type CatchUp = {
   readonly clock: Clock;
   readonly steps: number;
 };
@@ -33,7 +33,7 @@ export function makeFromRate(stepsPerSecond: number, maxDelta = 0.25): Clock {
 
 // ---------------------------------------------------------------------------------------------------------------------
 
-export function advance(clock: Clock, realSeconds: number): Advance {
+export function advance(clock: Clock, realSeconds: number): CatchUp {
   if (clock.paused) {
     return { clock, steps: 0 };
   }

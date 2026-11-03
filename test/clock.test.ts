@@ -20,7 +20,7 @@ function assertNumber(actual: number, expected: number, epsilon = 1e-9): void {
 }
 
 function assertAdvance(
-  actual: Clock.Advance,
+  actual: Clock.CatchUp,
   expected: { steps: number; accumulator: number; time: number; ticks: number },
 ): void {
   assert.equal(actual.steps, expected.steps, "steps");
