@@ -35,7 +35,7 @@ export function wasReleased(keyboard: Keyboard, code: string): boolean {
   return keyboard.released.has(code);
 }
 
-export function axis(keyboard: Keyboard, negative: string, positive: string): number {
+export function getAxis(keyboard: Keyboard, negative: string, positive: string): number {
   return getHeldValue(keyboard, positive) - getHeldValue(keyboard, negative);
 }
 

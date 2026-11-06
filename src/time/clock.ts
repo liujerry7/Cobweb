@@ -52,7 +52,7 @@ export function advance(clock: Clock, realSeconds: number): CatchUp {
   };
 }
 
-export function alpha(clock: Clock): number {
+export function getAlpha(clock: Clock): number {
   return clock.accumulator / clock.step;
 }
 

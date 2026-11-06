@@ -46,51 +46,51 @@ export function makeFromPoints(points: readonly Vec2.Vec2[]): Rect | undefined {
 
 // ---------------------------------------------------------------------------------------------------------------------
 
-export function left(r: Rect): number {
+export function getLeft(r: Rect): number {
   return r.x;
 }
 
-export function right(r: Rect): number {
+export function getRight(r: Rect): number {
   return r.x + r.width;
 }
 
-export function top(r: Rect): number {
+export function getTop(r: Rect): number {
   return r.y;
 }
 
-export function bottom(r: Rect): number {
+export function getBottom(r: Rect): number {
   return r.y + r.height;
 }
 
-export function position(r: Rect): Vec2.Vec2 {
+export function getPosition(r: Rect): Vec2.Vec2 {
   return Vec2.make(r.x, r.y);
 }
 
-export function size(r: Rect): Vec2.Vec2 {
+export function getSize(r: Rect): Vec2.Vec2 {
   return Vec2.make(r.width, r.height);
 }
 
-export function center(r: Rect): Vec2.Vec2 {
+export function getCenter(r: Rect): Vec2.Vec2 {
   return Vec2.make(r.x + r.width / 2, r.y + r.height / 2);
 }
 
-export function topLeft(r: Rect): Vec2.Vec2 {
+export function getTopLeft(r: Rect): Vec2.Vec2 {
   return Vec2.make(r.x, r.y);
 }
 
-export function topRight(r: Rect): Vec2.Vec2 {
+export function getTopRight(r: Rect): Vec2.Vec2 {
   return Vec2.make(r.x + r.width, r.y);
 }
 
-export function bottomLeft(r: Rect): Vec2.Vec2 {
+export function getBottomLeft(r: Rect): Vec2.Vec2 {
   return Vec2.make(r.x, r.y + r.height);
 }
 
-export function bottomRight(r: Rect): Vec2.Vec2 {
+export function getBottomRight(r: Rect): Vec2.Vec2 {
   return Vec2.make(r.x + r.width, r.y + r.height);
 }
 
-export function area(r: Rect): number {
+export function getArea(r: Rect): number {
   return r.width * r.height;
 }
 
@@ -128,15 +128,17 @@ export function containsPoint(r: Rect, p: Vec2.Vec2): boolean {
 
 export function containsRect(outer: Rect, inner: Rect): boolean {
   return (
-    left(outer) <= left(inner) &&
-    right(inner) <= right(outer) &&
-    top(inner) >= top(outer) &&
-    bottom(inner) <= bottom(outer)
+    getLeft(outer) <= getLeft(inner) &&
+    getRight(inner) <= getRight(outer) &&
+    getTop(inner) >= getTop(outer) &&
+    getBottom(inner) <= getBottom(outer)
   );
 }
 
 export function intersects(r1: Rect, r2: Rect): boolean {
-  return left(r1) < right(r2) && left(r2) < right(r1) && top(r1) < bottom(r2) && top(r2) < bottom(r1);
+  return (
+    getLeft(r1) < getRight(r2) && getLeft(r2) < getRight(r1) && getTop(r1) < getBottom(r2) && getTop(r2) < getBottom(r1)
+  );
 }
 
 export function intersection(r1: Rect, r2: Rect): Rect | undefined {
@@ -144,15 +146,15 @@ export function intersection(r1: Rect, r2: Rect): Rect | undefined {
     return undefined;
   }
 
-  return makeFromCorners(Vec2.max(topLeft(r1), topLeft(r2)), Vec2.min(bottomRight(r1), bottomRight(r2)));
+  return makeFromCorners(Vec2.max(getTopLeft(r1), getTopLeft(r2)), Vec2.min(getBottomRight(r1), getBottomRight(r2)));
 }
 
 export function union(r1: Rect, r2: Rect): Rect {
-  return makeFromCorners(Vec2.min(topLeft(r1), topLeft(r2)), Vec2.max(bottomRight(r1), bottomRight(r2)));
+  return makeFromCorners(Vec2.min(getTopLeft(r1), getTopLeft(r2)), Vec2.max(getBottomRight(r1), getBottomRight(r2)));
 }
 
 export function clampPoint(r: Rect, p: Vec2.Vec2): Vec2.Vec2 {
-  return Vec2.min(Vec2.max(topLeft(r), p), bottomRight(r));
+  return Vec2.min(Vec2.max(getTopLeft(r), p), getBottomRight(r));
 }
 
 // ---------------------------------------------------------------------------------------------------------------------

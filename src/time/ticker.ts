@@ -43,7 +43,7 @@ export function start(game: Game, clock = Clock.make(), scheduler = BROWSER): Ti
       game.update(currentClock.step);
     }
 
-    game.render(Clock.alpha(currentClock));
+    game.render(Clock.getAlpha(currentClock));
 
     if (running) {
       frameId = scheduler.requestFrame(runFrame);

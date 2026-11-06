@@ -93,37 +93,37 @@ describe("measuring", () => {
     assert.equal(Vec2.cross(vec(2, 0), vec(4, 0)), 0);
   });
 
-  test("length and lengthSquared", () => {
-    assert.equal(Vec2.length(vec(3, 4)), 5);
-    assert.equal(Vec2.lengthSquared(vec(3, 4)), 25);
-    assert.equal(Vec2.length(Vec2.ZERO), 0);
+  test("getLength and getLengthSquared", () => {
+    assert.equal(Vec2.getLength(vec(3, 4)), 5);
+    assert.equal(Vec2.getLengthSquared(vec(3, 4)), 25);
+    assert.equal(Vec2.getLength(Vec2.ZERO), 0);
   });
 
-  test("distance and distanceSquared", () => {
-    assert.equal(Vec2.distance(vec(1, 1), vec(4, 5)), 5);
-    assert.equal(Vec2.distanceSquared(vec(1, 1), vec(4, 5)), 25);
-    assert.equal(Vec2.distance(vec(4, 5), vec(1, 1)), 5);
+  test("getDistance and getDistanceSquared", () => {
+    assert.equal(Vec2.getDistance(vec(1, 1), vec(4, 5)), 5);
+    assert.equal(Vec2.getDistanceSquared(vec(1, 1), vec(4, 5)), 25);
+    assert.equal(Vec2.getDistance(vec(4, 5), vec(1, 1)), 5);
   });
 
-  test("angle: 0 is right, π/2 is down, -π/2 is up", () => {
-    assertNumber(Vec2.angle(Vec2.RIGHT), 0);
-    assertNumber(Vec2.angle(Vec2.DOWN), Math.PI / 2);
-    assertNumber(Vec2.angle(Vec2.UP), -Math.PI / 2);
-    assertNumber(Vec2.angle(Vec2.LEFT), Math.PI);
+  test("getAngle: 0 is right, π/2 is down, -π/2 is up", () => {
+    assertNumber(Vec2.getAngle(Vec2.RIGHT), 0);
+    assertNumber(Vec2.getAngle(Vec2.DOWN), Math.PI / 2);
+    assertNumber(Vec2.getAngle(Vec2.UP), -Math.PI / 2);
+    assertNumber(Vec2.getAngle(Vec2.LEFT), Math.PI);
   });
 
-  test("angleBetween is signed: positive is clockwise on screen", () => {
-    assertNumber(Vec2.angleBetween(Vec2.RIGHT, Vec2.DOWN), Math.PI / 2);
-    assertNumber(Vec2.angleBetween(Vec2.DOWN, Vec2.RIGHT), -Math.PI / 2);
-    assertNumber(Vec2.angleBetween(Vec2.RIGHT, Vec2.LEFT), Math.PI);
+  test("getAngleBetween is signed: positive is clockwise on screen", () => {
+    assertNumber(Vec2.getAngleBetween(Vec2.RIGHT, Vec2.DOWN), Math.PI / 2);
+    assertNumber(Vec2.getAngleBetween(Vec2.DOWN, Vec2.RIGHT), -Math.PI / 2);
+    assertNumber(Vec2.getAngleBetween(Vec2.RIGHT, Vec2.LEFT), Math.PI);
   });
 
-  test("angleBetween ignores length", () => {
-    assertNumber(Vec2.angleBetween(vec(5, 0), vec(0, 0.1)), Math.PI / 2);
+  test("getAngleBetween ignores length", () => {
+    assertNumber(Vec2.getAngleBetween(vec(5, 0), vec(0, 0.1)), Math.PI / 2);
   });
 
-  test("angleBetween stays small across the left side, where angles jump from π to -π", () => {
-    assertNumber(Vec2.angleBetween(vec(-1, 0.01), vec(-1, -0.01)), 0.02, 1e-4);
+  test("getAngleBetween stays small across the left side, where angles jump from π to -π", () => {
+    assertNumber(Vec2.getAngleBetween(vec(-1, 0.01), vec(-1, -0.01)), 0.02, 1e-4);
   });
 });
 
@@ -152,13 +152,13 @@ describe("direction and length", () => {
   });
 
   test("rotateClockwise keeps the length", () => {
-    assertNumber(Vec2.length(Vec2.rotateClockwise(vec(3, 4), 1.234)), 5);
+    assertNumber(Vec2.getLength(Vec2.rotateClockwise(vec(3, 4), 1.234)), 5);
   });
 
   test("rotateClockwise by angleBetween turns a to b's direction", () => {
     const a = vec(-1, 0.01);
     const b = vec(-1, -0.01);
-    assertVec(Vec2.normalize(Vec2.rotateClockwise(a, Vec2.angleBetween(a, b))), Vec2.normalize(b));
+    assertVec(Vec2.normalize(Vec2.rotateClockwise(a, Vec2.getAngleBetween(a, b))), Vec2.normalize(b));
   });
 
   test("clampLength shortens long vectors and leaves short ones alone", () => {

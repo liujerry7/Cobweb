@@ -121,14 +121,14 @@ describe("advancing", () => {
 // ---------------------------------------------------------------------------------------------------------------------
 
 describe("reading", () => {
-  test("alpha is how far the bank is toward the next step", () => {
-    assertNumber(Clock.alpha(clock()), 0);
-    assertNumber(Clock.alpha(clock({ accumulator: 0.125 })), 0.5);
-    assertNumber(Clock.alpha(clock({ accumulator: 0.1875 })), 0.75);
+  test("getAlpha is how far the bank is toward the next step", () => {
+    assertNumber(Clock.getAlpha(clock()), 0);
+    assertNumber(Clock.getAlpha(clock({ accumulator: 0.125 })), 0.5);
+    assertNumber(Clock.getAlpha(clock({ accumulator: 0.1875 })), 0.75);
   });
 
-  test("alpha after advancing is the leftover fraction", () => {
-    assertNumber(Clock.alpha(Clock.advance(clock(), 0.625).clock), 0.5);
+  test("getAlpha after advancing is the leftover fraction", () => {
+    assertNumber(Clock.getAlpha(Clock.advance(clock(), 0.625).clock), 0.5);
   });
 });
 

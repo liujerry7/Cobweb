@@ -55,34 +55,34 @@ export function cross(v1: Vec2, v2: Vec2): number {
   return v1.x * v2.y - v1.y * v2.x;
 }
 
-export function length(v: Vec2): number {
+export function getLength(v: Vec2): number {
   return Math.sqrt(v.x * v.x + v.y * v.y);
 }
 
-export function lengthSquared(v: Vec2): number {
+export function getLengthSquared(v: Vec2): number {
   return v.x * v.x + v.y * v.y;
 }
 
-export function distance(v1: Vec2, v2: Vec2): number {
-  return length(subtract(v2, v1));
+export function getDistance(v1: Vec2, v2: Vec2): number {
+  return getLength(subtract(v2, v1));
 }
 
-export function distanceSquared(v1: Vec2, v2: Vec2): number {
-  return lengthSquared(subtract(v2, v1));
+export function getDistanceSquared(v1: Vec2, v2: Vec2): number {
+  return getLengthSquared(subtract(v2, v1));
 }
 
-export function angle(v: Vec2): number {
+export function getAngle(v: Vec2): number {
   return Math.atan2(v.y, v.x);
 }
 
-export function angleBetween(v1: Vec2, v2: Vec2): number {
+export function getAngleBetween(v1: Vec2, v2: Vec2): number {
   return Math.atan2(cross(v1, v2), dot(v1, v2));
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
 
 export function normalize(v: Vec2): Vec2 {
-  const vLength = length(v);
+  const vLength = getLength(v);
   return vLength === 0 ? ZERO : { x: v.x / vLength, y: v.y / vLength };
 }
 
@@ -100,7 +100,7 @@ export function rotateClockwise(v: Vec2, radians: number): Vec2 {
 }
 
 export function clampLength(v: Vec2, max: number): Vec2 {
-  return lengthSquared(v) <= max * max ? v : scale(normalize(v), max);
+  return getLengthSquared(v) <= max * max ? v : scale(normalize(v), max);
 }
 
 export function reflect(v: Vec2, normal: Vec2): Vec2 {

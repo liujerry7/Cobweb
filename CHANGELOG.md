@@ -9,6 +9,13 @@ date, and start a new empty **Unreleased** above it.
 
 ## [Unreleased]
 
+### Changed
+
+- **Breaking:** functions whose names were nouns now start with `get`, so every function name starts with a verb.
+  `Vec2`: `getLength`, `getLengthSquared`, `getDistance`, `getDistanceSquared`, `getAngle`, `getAngleBetween`.
+  `Rect`: `getLeft`, `getRight`, `getTop`, `getBottom`, `getPosition`, `getSize`, `getCenter`, `getTopLeft`,
+  `getTopRight`, `getBottomLeft`, `getBottomRight`, `getArea`. `Clock`: `getAlpha`. `Keyboard`: `getAxis`.
+
 ## [0.3.0] - 2026-11-06
 
 ### Added

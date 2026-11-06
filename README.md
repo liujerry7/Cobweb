@@ -34,6 +34,11 @@ JavaScript: `import { Vec2 } from "cobweb"`.
 - Functions and variables are camelCase, types are PascalCase, constants are UPPER_SNAKE. A
   constant is a value fixed in the source and the same on every run (`ZERO`, `BROWSER`); a `const`
   computed or looked up at run time is still camelCase.
+- Function names start with a verb. A read that would otherwise be a noun takes `get`
+  (`getLength`, `getArea`, `getAlpha`); conversions take `convert` (`convertWorldToScreen`); checks
+  take `is`, `has` or `was` (`isEmpty`, `hasMoved`, `wasPressed`); makers are `make` / `makeFromX`. Math
+  operations whose names are already verbs keep them (`dot`, `cross`, `min`, `max`, `union`,
+  `intersection`, `lerp`).
 - A module reads top to bottom: imports, types, constants, then exported functions in sections
   split by the divider (making, reading, changing, comparing), then private helpers.
 - One-off bookings are `requestX` / `cancelX` and return an `XId`; ongoing processes are

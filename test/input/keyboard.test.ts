@@ -51,14 +51,14 @@ describe("reading", () => {
     assert.equal(Keyboard.wasReleased(k, "Space"), false);
   });
 
-  test("axis is -1, 0 or 1 from two held keys", () => {
-    assert.equal(Keyboard.axis(keyboard(["ArrowLeft"]), "ArrowLeft", "ArrowRight"), -1);
-    assert.equal(Keyboard.axis(keyboard(["ArrowRight"]), "ArrowLeft", "ArrowRight"), 1);
-    assert.equal(Keyboard.axis(keyboard(), "ArrowLeft", "ArrowRight"), 0);
+  test("getAxis is -1, 0 or 1 from two held keys", () => {
+    assert.equal(Keyboard.getAxis(keyboard(["ArrowLeft"]), "ArrowLeft", "ArrowRight"), -1);
+    assert.equal(Keyboard.getAxis(keyboard(["ArrowRight"]), "ArrowLeft", "ArrowRight"), 1);
+    assert.equal(Keyboard.getAxis(keyboard(), "ArrowLeft", "ArrowRight"), 0);
   });
 
-  test("axis is 0 when both keys are held", () => {
-    assert.equal(Keyboard.axis(keyboard(["ArrowLeft", "ArrowRight"]), "ArrowLeft", "ArrowRight"), 0);
+  test("getAxis is 0 when both keys are held", () => {
+    assert.equal(Keyboard.getAxis(keyboard(["ArrowLeft", "ArrowRight"]), "ArrowLeft", "ArrowRight"), 0);
   });
 });
 

@@ -67,28 +67,28 @@ describe("making one", () => {
 
 describe("reading", () => {
   test("edges: y grows downward, so bottom is y + height", () => {
-    assert.equal(Rect.left(R), 1);
-    assert.equal(Rect.right(R), 4);
-    assert.equal(Rect.top(R), 2);
-    assert.equal(Rect.bottom(R), 6);
+    assert.equal(Rect.getLeft(R), 1);
+    assert.equal(Rect.getRight(R), 4);
+    assert.equal(Rect.getTop(R), 2);
+    assert.equal(Rect.getBottom(R), 6);
   });
 
-  test("position, size and center", () => {
-    assertVec(Rect.position(R), vec(1, 2));
-    assertVec(Rect.size(R), vec(3, 4));
-    assertVec(Rect.center(R), vec(2.5, 4));
+  test("getPosition, getSize and getCenter", () => {
+    assertVec(Rect.getPosition(R), vec(1, 2));
+    assertVec(Rect.getSize(R), vec(3, 4));
+    assertVec(Rect.getCenter(R), vec(2.5, 4));
   });
 
   test("corners", () => {
-    assertVec(Rect.topLeft(R), vec(1, 2));
-    assertVec(Rect.topRight(R), vec(4, 2));
-    assertVec(Rect.bottomLeft(R), vec(1, 6));
-    assertVec(Rect.bottomRight(R), vec(4, 6));
+    assertVec(Rect.getTopLeft(R), vec(1, 2));
+    assertVec(Rect.getTopRight(R), vec(4, 2));
+    assertVec(Rect.getBottomLeft(R), vec(1, 6));
+    assertVec(Rect.getBottomRight(R), vec(4, 6));
   });
 
-  test("area", () => {
-    assert.equal(Rect.area(R), 12);
-    assert.equal(Rect.area(rect(5, 5, 0, 3)), 0);
+  test("getArea", () => {
+    assert.equal(Rect.getArea(R), 12);
+    assert.equal(Rect.getArea(rect(5, 5, 0, 3)), 0);
   });
 
   test("isEmpty when width or height is 0 or less", () => {
@@ -124,7 +124,7 @@ describe("moving and resizing", () => {
   });
 
   test("expand keeps the center", () => {
-    assertVec(Rect.center(Rect.expand(R, 3)), Rect.center(R));
+    assertVec(Rect.getCenter(Rect.expand(R, 3)), Rect.getCenter(R));
   });
 
   test("inputs are left unchanged", () => {
