@@ -37,6 +37,8 @@ JavaScript: `import { Vec2 } from "cobweb"`.
   split by the divider (making, reading, changing, comparing), then private helpers.
 - One-off bookings are `requestX` / `cancelX` and return an `XId`; ongoing processes are
   `start` / `stop` and return a handle; listeners are `addX` / `removeX`.
+- A type that takes events has `apply(x, event)`, which returns the new `x`, and
+  `applyAll(x, events)`, which applies them in order (`events.reduce(apply, x)`).
 - Named exports only, no `export default`. `src/index.ts` re-exports each type module as a
   namespace (`export * as Vec2 from "./vec2.ts"`).
 - Relative imports name the real file, `.ts` included; the build rewrites them to `.js`.
