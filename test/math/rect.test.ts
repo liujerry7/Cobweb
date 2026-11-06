@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
-import * as Rect from "../src/rect.ts";
-import * as Vec2 from "../src/vec2.ts";
+import * as Rect from "../../src/math/rect.ts";
+import * as Vec2 from "../../src/math/vec2.ts";
 
 function rect(x: number, y: number, width: number, height: number): Rect.Rect {
   return Object.freeze({ x, y, width, height });

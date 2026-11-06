@@ -28,8 +28,9 @@ JavaScript: `import { Vec2 } from "cobweb"`.
 
 ## Conventions
 
-- Files and folders are lowercase kebab-case (`vec2.ts`, `keyboard-listener.ts`); tests mirror them under
-  `test/` as `<name>.test.ts`.
+- Files and folders are lowercase kebab-case (`vec2.ts`, `keyboard-listener.ts`). Modules are grouped by
+  area in `src/` (`math/`, `time/`, `input/`, `data-structures/`), and tests mirror them under `test/` as
+  `<name>.test.ts` (`test/input/keyboard.test.ts`).
 - Functions and variables are camelCase, types are PascalCase, constants are UPPER_SNAKE. A
   constant is a value fixed in the source and the same on every run (`ZERO`, `BROWSER`); a `const`
   computed or looked up at run time is still camelCase.
@@ -60,11 +61,11 @@ recommended in `.vscode/extensions.json`).
 
 ## Layout
 
-| folder  | holds                                |
-| ------- | ------------------------------------ |
-| `src/`  | engine modules, one concept per file |
-| `test/` | `node:test` tests, one per module    |
-| `dist/` | build output, not committed          |
+| folder  | holds                                                            |
+| ------- | ---------------------------------------------------------------- |
+| `src/`  | engine modules, one concept per file, grouped in folders by area |
+| `test/` | `node:test` tests, one per module, in the same folders           |
+| `dist/` | build output, not committed                                      |
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
-import * as Clock from "../src/clock.ts";
+import * as Clock from "../../src/time/clock.ts";
 
 function clock(fields: Partial<Clock.Clock> = {}): Clock.Clock {
   return Object.freeze({

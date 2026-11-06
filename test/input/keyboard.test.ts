@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
-import * as Keyboard from "../src/keyboard.ts";
+import * as Keyboard from "../../src/input/keyboard.ts";
 
 function keyboard(held: string[] = [], pressed: string[] = [], released: string[] = []): Keyboard.Keyboard {
   return Object.freeze({ held: new Set(held), pressed: new Set(pressed), released: new Set(released) });

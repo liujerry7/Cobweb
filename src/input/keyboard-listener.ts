@@ -1,5 +1,5 @@
 import type { KeyEvent } from "./keyboard.ts";
-import * as Sets from "./sets.ts";
+import * as Sets from "../data-structures/sets.ts";
 
 export type KeyboardListener = {
   readonly drain: () => readonly KeyEvent[];

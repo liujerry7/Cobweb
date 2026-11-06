@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
-import * as Sets from "../src/sets.ts";
+import * as Sets from "../../src/data-structures/sets.ts";
 
 function set(...values: string[]): ReadonlySet<string> {
   return new Set(values);

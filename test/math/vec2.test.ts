@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
-import * as Vec2 from "../src/vec2.ts";
+import * as Vec2 from "../../src/math/vec2.ts";
 
 // A frozen vector: any function that tries to change its input throws instead of passing quietly.
 function vec(x: number, y: number): Vec2.Vec2 {

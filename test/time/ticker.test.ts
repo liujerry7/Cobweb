@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
-import * as Clock from "../src/clock.ts";
-import * as Ticker from "../src/ticker.ts";
+import * as Clock from "../../src/time/clock.ts";
+import * as Ticker from "../../src/time/ticker.ts";
 
 function fakeScheduler(startTime = 0) {
   let time = startTime;

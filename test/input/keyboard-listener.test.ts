@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
-import * as Keyboard from "../src/keyboard.ts";
-import * as KeyboardListener from "../src/keyboard-listener.ts";
+import * as Keyboard from "../../src/input/keyboard.ts";
+import * as KeyboardListener from "../../src/input/keyboard-listener.ts";
 
 function fakeTarget() {
   const target = new EventTarget();

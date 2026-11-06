@@ -1,4 +1,4 @@
-import * as Sets from "./sets.ts";
+import * as Sets from "../data-structures/sets.ts";
 
 export type Keyboard = {
   readonly held: ReadonlySet<string>;
