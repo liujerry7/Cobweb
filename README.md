@@ -28,7 +28,7 @@ JavaScript: `import { Vec2 } from "cobweb"`.
 
 ## Conventions
 
-- Files and folders are lowercase kebab-case (`vec2.ts`, `key-state.ts`); tests mirror them under
+- Files and folders are lowercase kebab-case (`vec2.ts`, `keyboard-listener.ts`); tests mirror them under
   `test/` as `<name>.test.ts`.
 - Functions and variables are camelCase, types are PascalCase, constants are UPPER_SNAKE. A
   constant is a value fixed in the source and the same on every run (`ZERO`, `BROWSER`); a `const`

@@ -15,6 +15,10 @@ date, and start a new empty **Unreleased** above it.
   and an interpolation alpha.
 - `Ticker`, which drives a game's `update` and `render` from a `Clock` once per animation frame: start and stop,
   pause, resume and time scale, with a swappable `Scheduler` so it runs without a browser in tests.
+- `Keyboard`, the keyboard's state as plain immutable data: held keys, keys pressed or released this step, an axis
+  from two keys, and `apply` / `applyAll` for key events, with `beginStep` / `endStep` so a press lasts one step.
+- `KeyboardListener`, which queues browser key events for `Keyboard` to `drain` once per step, ignoring auto-repeat
+  and releasing every held key when the window loses focus.
 
 ## [0.2.0] - 2026-10-28
 
