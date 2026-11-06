@@ -19,6 +19,12 @@ date, and start a new empty **Unreleased** above it.
   from two keys, and `apply` / `applyAll` for key inputs, with `beginStep` / `endStep` so a press lasts one step.
 - `KeyboardListener`, which queues browser key events for `Keyboard` to `drain` once per step, ignoring auto-repeat
   and releasing every held key when the window loses focus.
+- `Pointer`, the mouse, pen or touch pointer as plain immutable data: position, movement and wheel this step, left and
+  right buttons held, pressed or released, whether it is inside, and dragging, with `apply` / `applyAll` and
+  `beginStep` / `endStep`.
+- `PointerListener`, which queues an element's pointer events for `Pointer` to `drain` once per step: reads buttons
+  from the browser's bitmask so chords register, captures the pointer while a button is down, blocks the right-click
+  menu, follows only the primary pointer and releases every button on blur or cancel.
 
 ## [0.2.0] - 2026-10-28
 
