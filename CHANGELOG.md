@@ -9,6 +9,8 @@ date, and start a new empty **Unreleased** above it.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-06
+
 ### Added
 
 - `Clock`, a fixed-timestep clock as plain immutable data: steps per frame, a cap on long frames, time scale, pausing
