@@ -39,6 +39,7 @@ JavaScript: `import { Vec2 } from "cobweb"`.
   `start` / `stop` and return a handle; listeners are `addX` / `removeX`.
 - A type that takes events has `apply(x, event)`, which returns the new `x`, and
   `applyAll(x, events)`, which applies them in order (`events.reduce(apply, x)`).
+- A queue that hands over everything it holds and empties itself has `drain()`.
 - Named exports only, no `export default`. `src/index.ts` re-exports each type module as a
   namespace (`export * as Vec2 from "./vec2.ts"`).
 - Relative imports name the real file, `.ts` included; the build rewrites them to `.js`.
