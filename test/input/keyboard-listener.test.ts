@@ -19,16 +19,16 @@ function keyEvent(type: "keydown" | "keyup", code: string, repeat: boolean): Eve
   return Object.assign(new Event(type), { code, repeat });
 }
 
-function down(code: string): Keyboard.KeyEvent {
+function down(code: string): Keyboard.KeyInput {
   return { kind: "down", code };
 }
 
-function up(code: string): Keyboard.KeyEvent {
+function up(code: string): Keyboard.KeyInput {
   return { kind: "up", code };
 }
 
-function byCode(events: readonly Keyboard.KeyEvent[]): Keyboard.KeyEvent[] {
-  return [...events].sort((a, b) => a.code.localeCompare(b.code));
+function byCode(inputs: readonly Keyboard.KeyInput[]): Keyboard.KeyInput[] {
+  return [...inputs].sort((a, b) => a.code.localeCompare(b.code));
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -39,20 +39,20 @@ describe("listening", () => {
     assert.deepEqual(listener.drain(), []);
   });
 
-  test("a keydown queues a down event", () => {
+  test("a keydown queues a down input", () => {
     const { listener, keyDown } = fakeTarget();
     keyDown("Space");
     assert.deepEqual(listener.drain(), [down("Space")]);
   });
 
-  test("a keyup queues an up event", () => {
+  test("a keyup queues an up input", () => {
     const { listener, keyDown, keyUp } = fakeTarget();
     keyDown("Space");
     keyUp("Space");
     assert.deepEqual(listener.drain(), [down("Space"), up("Space")]);
   });
 
-  test("events are queued in the order they arrive", () => {
+  test("inputs are queued in the order they arrive", () => {
     const { listener, keyDown, keyUp } = fakeTarget();
     keyDown("KeyA");
     keyDown("Space");
@@ -85,7 +85,7 @@ describe("draining", () => {
     assert.deepEqual(listener.drain(), []);
   });
 
-  test("events after a drain wait for the next drain", () => {
+  test("inputs after a drain wait for the next drain", () => {
     const { listener, keyDown, keyUp } = fakeTarget();
     keyDown("Space");
     listener.drain();
@@ -93,7 +93,7 @@ describe("draining", () => {
     assert.deepEqual(listener.drain(), [up("Space")]);
   });
 
-  test("a drained list is not changed by later events", () => {
+  test("a drained list is not changed by later key events", () => {
     const { listener, keyDown } = fakeTarget();
     keyDown("KeyA");
     const drained = listener.drain();
@@ -143,7 +143,7 @@ describe("losing focus", () => {
 // ---------------------------------------------------------------------------------------------------------------------
 
 describe("stopping", () => {
-  test("stop drops the queued events", () => {
+  test("stop drops the queued inputs", () => {
     const { listener, keyDown } = fakeTarget();
     keyDown("Space");
     listener.stop();

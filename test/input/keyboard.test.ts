@@ -6,11 +6,11 @@ function keyboard(held: string[] = [], pressed: string[] = [], released: string[
   return Object.freeze({ held: new Set(held), pressed: new Set(pressed), released: new Set(released) });
 }
 
-function down(code: string): Keyboard.KeyEvent {
+function down(code: string): Keyboard.KeyInput {
   return { kind: "down", code };
 }
 
-function up(code: string): Keyboard.KeyEvent {
+function up(code: string): Keyboard.KeyInput {
   return { kind: "up", code };
 }
 
@@ -111,14 +111,14 @@ describe("changing", () => {
 // ---------------------------------------------------------------------------------------------------------------------
 
 describe("steps", () => {
-  test("beginStep applies the step's events in order", () => {
+  test("beginStep applies the step's inputs in order", () => {
     assertKeys(Keyboard.beginStep(Keyboard.make(), [down("KeyA"), down("Space")]), {
       held: ["KeyA", "Space"],
       pressed: ["KeyA", "Space"],
     });
   });
 
-  test("beginStep with no events changes nothing", () => {
+  test("beginStep with no inputs changes nothing", () => {
     assertKeys(Keyboard.beginStep(keyboard(["KeyA"]), []), { held: ["KeyA"] });
   });
 
@@ -143,11 +143,11 @@ describe("steps", () => {
 
   test("a key held across steps is pressed once and released once", () => {
     let k = Keyboard.make();
-    const steps: Keyboard.KeyEvent[][] = [[down("KeyD")], [], [], [up("KeyD")]];
+    const steps: Keyboard.KeyInput[][] = [[down("KeyD")], [], [], [up("KeyD")]];
     let presses = 0;
     let releases = 0;
-    for (const events of steps) {
-      k = Keyboard.beginStep(k, events);
+    for (const inputs of steps) {
+      k = Keyboard.beginStep(k, inputs);
       presses += Keyboard.wasPressed(k, "KeyD") ? 1 : 0;
       releases += Keyboard.wasReleased(k, "KeyD") ? 1 : 0;
       k = Keyboard.endStep(k);

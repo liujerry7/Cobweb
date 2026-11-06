@@ -38,8 +38,9 @@ JavaScript: `import { Vec2 } from "cobweb"`.
   split by the divider (making, reading, changing, comparing), then private helpers.
 - One-off bookings are `requestX` / `cancelX` and return an `XId`; ongoing processes are
   `start` / `stop` and return a handle; listeners are `addX` / `removeX`.
-- A type that takes events has `apply(x, event)`, which returns the new `x`, and
-  `applyAll(x, events)`, which applies them in order (`events.reduce(apply, x)`).
+- A type that takes input has a `<Device>Input` type (`KeyInput`, `PointerInput`), `apply(x, input)`,
+  which returns the new `x`, and `applyAll(x, inputs)`, which applies them in order
+  (`inputs.reduce(apply, x)`). Browser events keep the name `event`.
 - A queue that hands over everything it holds and empties itself has `drain()`.
 - Named exports only, no `export default`. `src/index.ts` re-exports each type module as a
   namespace (`export * as Vec2 from "./vec2.ts"`).

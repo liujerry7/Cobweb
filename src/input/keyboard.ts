@@ -6,7 +6,7 @@ export type Keyboard = {
   readonly released: ReadonlySet<string>;
 };
 
-export type KeyEvent = {
+export type KeyInput = {
   readonly kind: "down" | "up";
   readonly code: string;
 };
@@ -65,8 +65,8 @@ export function release(keyboard: Keyboard, code: string): Keyboard {
   };
 }
 
-export function beginStep(keyboard: Keyboard, events: readonly KeyEvent[]): Keyboard {
-  return applyAll(keyboard, events);
+export function beginStep(keyboard: Keyboard, inputs: readonly KeyInput[]): Keyboard {
+  return applyAll(keyboard, inputs);
 }
 
 export function endStep(keyboard: Keyboard): Keyboard {
@@ -89,12 +89,12 @@ export function releaseAll(keyboard: Keyboard): Keyboard {
 
 // ---------------------------------------------------------------------------------------------------------------------
 
-export function apply(keyboard: Keyboard, event: KeyEvent): Keyboard {
-  return event.kind === "down" ? press(keyboard, event.code) : release(keyboard, event.code);
+export function apply(keyboard: Keyboard, input: KeyInput): Keyboard {
+  return input.kind === "down" ? press(keyboard, input.code) : release(keyboard, input.code);
 }
 
-export function applyAll(keyboard: Keyboard, events: readonly KeyEvent[]): Keyboard {
-  return events.reduce(apply, keyboard);
+export function applyAll(keyboard: Keyboard, inputs: readonly KeyInput[]): Keyboard {
+  return inputs.reduce(apply, keyboard);
 }
 
 // ---------------------------------------------------------------------------------------------------------------------

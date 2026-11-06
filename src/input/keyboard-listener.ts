@@ -1,8 +1,8 @@
-import type { KeyEvent } from "./keyboard.ts";
+import type { KeyInput } from "./keyboard.ts";
 import * as Sets from "../data-structures/sets.ts";
 
 export type KeyboardListener = {
-  readonly drain: () => readonly KeyEvent[];
+  readonly drain: () => readonly KeyInput[];
   readonly stop: () => void;
 };
 
@@ -11,11 +11,11 @@ export type KeyboardTarget = Pick<Window, "addEventListener" | "removeEventListe
 // ---------------------------------------------------------------------------------------------------------------------
 
 export function start(target: KeyboardTarget = window): KeyboardListener {
-  let queue: readonly KeyEvent[] = [];
+  let queue: readonly KeyInput[] = [];
   let down: ReadonlySet<string> = Sets.make<string>();
 
-  const enqueue = (events: readonly KeyEvent[]) => {
-    queue = [...queue, ...events];
+  const enqueue = (inputs: readonly KeyInput[]) => {
+    queue = [...queue, ...inputs];
   };
 
   const onKeyDown = (event: KeyboardEvent) => {
@@ -59,10 +59,10 @@ export function start(target: KeyboardTarget = window): KeyboardListener {
 
 // ---------------------------------------------------------------------------------------------------------------------
 
-function keyDown(code: string): KeyEvent {
+function keyDown(code: string): KeyInput {
   return { kind: "down", code };
 }
 
-function keyUp(code: string): KeyEvent {
+function keyUp(code: string): KeyInput {
   return { kind: "up", code };
 }
