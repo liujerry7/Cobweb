@@ -9,6 +9,8 @@ date, and start a new empty **Unreleased** above it.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-13
+
 ### Added
 
 - `Camera`, a 2D camera as plain immutable data: position, zoom and viewport, converting between world and screen,
