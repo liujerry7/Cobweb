@@ -9,6 +9,13 @@ date, and start a new empty **Unreleased** above it.
 
 ## [Unreleased]
 
+### Added
+
+- `Camera`, a 2D camera as plain immutable data: position, zoom and viewport, converting between world and screen,
+  the visible rect, moving, zooming at a point, following, clamping to a level, lerp and comparison.
+- `CanvasRenderer`, which draws on a 2D canvas: sharp on high-DPI screens, world units through a `Camera` or screen
+  units for UI, rects, circles, lines, polygons, images, sprite-sheet regions and text with fill, stroke and alpha.
+
 ### Changed
 
 - **Breaking:** functions whose names were nouns now start with `get`, so every function name starts with a verb.

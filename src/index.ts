@@ -6,3 +6,5 @@ export * as Keyboard from "./input/keyboard.ts";
 export * as KeyboardListener from "./input/keyboard-listener.ts";
 export * as Pointer from "./input/pointer.ts";
 export * as PointerListener from "./input/pointer-listener.ts";
+export * as Camera from "./renderer/camera.ts";
+export * as CanvasRenderer from "./renderer/canvas-renderer.ts";

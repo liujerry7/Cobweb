@@ -29,7 +29,7 @@ JavaScript: `import { Vec2 } from "cobweb"`.
 ## Conventions
 
 - Files and folders are lowercase kebab-case (`vec2.ts`, `keyboard-listener.ts`). Modules are grouped by
-  area in `src/` (`math/`, `time/`, `input/`, `data-structures/`), and tests mirror them under `test/` as
+  area in `src/` (`math/`, `time/`, `input/`, `renderer/`, `data-structures/`), and tests mirror them under `test/` as
   `<name>.test.ts` (`test/input/keyboard.test.ts`).
 - Functions and variables are camelCase, types are PascalCase, constants are UPPER_SNAKE. A
   constant is a value fixed in the source and the same on every run (`ZERO`, `BROWSER`); a `const`
@@ -47,6 +47,15 @@ JavaScript: `import { Vec2 } from "cobweb"`.
   which returns the new `x`, and `applyAll(x, inputs)`, which applies them in order
   (`inputs.reduce(apply, x)`). Browser events keep the name `event`.
 - A queue that hands over everything it holds and empties itself has `drain()`.
+- In a pure module, every function returns a new value and changes nothing. In a shell module (listeners, renderers),
+  functions change something outside, such as the browser or the canvas, and return `void` or a handle. The module
+  says which; the verb says what.
+- Verbs keep one meaning each:
+  - `apply` turns an input into a new value (`apply(x, input)`); nothing else is called `apply`.
+  - `set` gives a field or setting a value (`Camera.setZoom`, `CanvasRenderer.setCamera`).
+  - `trace` adds an outline to a path without painting it; `fill` and `stroke` paint a path.
+  - `draw` paints one thing from start to finish: style, trace, fill or stroke (`drawRect`, `drawText`).
+  - `render` produces a whole frame from many draws.
 - Named exports only, no `export default`. `src/index.ts` re-exports each type module as a
   namespace (`export * as Vec2 from "./vec2.ts"`).
 - Relative imports name the real file, `.ts` included; the build rewrites them to `.js`.
