@@ -76,11 +76,19 @@ recommended in `.vscode/extensions.json`).
 
 ## Layout
 
-| folder  | holds                                                            |
-| ------- | ---------------------------------------------------------------- |
-| `src/`  | engine modules, one concept per file, grouped in folders by area |
-| `test/` | `node:test` tests, one per module, in the same folders           |
-| `dist/` | build output, not committed                                      |
+| folder      | holds                                                            |
+| ----------- | ---------------------------------------------------------------- |
+| `src/`      | engine modules, one concept per file, grouped in folders by area |
+| `test/`     | `node:test` tests, one per module, in the same folders           |
+| `dist/`     | build output, not committed                                      |
+| `examples/` | pages that try the engine in a browser                           |
+
+To open an example, build, serve the repo root and open the page:
+
+```bash
+npm run build
+python -m http.server 8080   # then http://localhost:8080/examples/drawing.html
+```
 
 ## Contributing
 

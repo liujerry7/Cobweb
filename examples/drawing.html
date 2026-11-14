@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cobweb: drawing</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="screen"></canvas>
+    <script type="module">
+      import { Camera, CanvasRenderer, Pointer, PointerListener, Rect, Ticker, Vec2 } from "../dist/index.js";
+
+      const canvas = document.getElementById("screen");
+      const renderer = CanvasRenderer.make(canvas);
+      const listener = PointerListener.start(canvas);
+      const level = Rect.make(0, 0, 640, 360);
+
+      let camera = Camera.make(getWindowSize(), Rect.getCenter(level));
+      let pointer = Pointer.make();
+      let time = 0;
+
+      CanvasRenderer.resize(renderer, camera.viewport);
+      window.addEventListener("resize", onResize);
+      Ticker.start({ update, render });
+
+      function getWindowSize() {
+        return Vec2.make(window.innerWidth, window.innerHeight);
+      }
+
+      function onResize() {
+        camera = Camera.resize(camera, getWindowSize());
+        CanvasRenderer.resize(renderer, camera.viewport);
+      }
+
+      function update(step) {
+        pointer = Pointer.beginStep(pointer, listener.drain());
+        time += step;
+        camera = Camera.zoomAt(camera, Math.exp(-pointer.wheel.y * 0.001), pointer.position);
+        pointer = Pointer.endStep(pointer);
+      }
+
+      function render() {
+        CanvasRenderer.fillScreen(renderer, "#1b1b2b");
+        CanvasRenderer.setCamera(renderer, camera);
+        drawLevel();
+        drawBall();
+        drawMouseMarker();
+        CanvasRenderer.resetCamera(renderer);
+        drawHud();
+      }
+
+      function drawLevel() {
+        CanvasRenderer.drawRect(renderer, level, { fill: "#2e3a59", stroke: "#8899cc", lineWidth: 2 });
+        for (let x = 32; x < level.width; x += 32) {
+          CanvasRenderer.drawLine(renderer, Vec2.make(x, 0), Vec2.make(x, level.height), {
+            stroke: "white",
+            alpha: 0.1,
+          });
+        }
+        for (let y = 32; y < level.height; y += 32) {
+          CanvasRenderer.drawLine(renderer, Vec2.make(0, y), Vec2.make(level.width, y), {
+            stroke: "white",
+            alpha: 0.1,
+          });
+        }
+        const hill = [Vec2.make(420, 360), Vec2.make(500, 250), Vec2.make(580, 360)];
+        CanvasRenderer.drawPolygon(renderer, hill, { fill: "#3f7d4e", stroke: "#a6e3a1", lineWidth: 2 });
+      }
+
+      function drawBall() {
+        const center = Vec2.add(Rect.getCenter(level), Vec2.makeFromAngleRadians(time, 100));
+        CanvasRenderer.drawCircle(renderer, center, 16, { fill: "tomato", stroke: "white", lineWidth: 2 });
+      }
+
+      function drawMouseMarker() {
+        const world = Camera.convertScreenToWorld(camera, pointer.position);
+        CanvasRenderer.drawCircle(renderer, world, 4, { fill: "gold" });
+      }
+
+      function drawHud() {
+        const world = Vec2.round(Camera.convertScreenToWorld(camera, pointer.position));
+        const text = `zoom ${camera.zoom.toFixed(2)}   world ${world.x}, ${world.y}`;
+        CanvasRenderer.drawText(renderer, text, Vec2.make(16, 32), { fill: "white", font: "16px monospace" });
+      }
+    </script>
+  </body>
+</html>
