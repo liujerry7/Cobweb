@@ -9,6 +9,12 @@ date, and start a new empty **Unreleased** above it.
 
 ## [Unreleased]
 
+### Added
+
+- `Angle`, functions on angles in radians: full, half and quarter turns, converting to and from degrees, the shortest
+  displacement between two angles, normalizing into a half turn either side of zero, turning toward a goal by at most
+  a step, lerp the short way round and comparison that ignores whole turns.
+
 ### Fixed
 
 - `CanvasRenderer.clear` and `CanvasRenderer.fillScreen` put the camera back afterwards, so they can be called after

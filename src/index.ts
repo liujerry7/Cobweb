@@ -1,5 +1,6 @@
 export * as Vec2 from "./math/vec2.ts";
 export * as Rect from "./math/rect.ts";
+export * as Angle from "./math/angle.ts";
 export * as Clock from "./time/clock.ts";
 export * as Ticker from "./time/ticker.ts";
 export * as Keyboard from "./input/keyboard.ts";
