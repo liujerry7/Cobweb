@@ -152,26 +152,25 @@ describe("changing", () => {
     assert.deepEqual(calls, [["imageSmoothingEnabled =", false]]);
   });
 
-  test("clear turns the transform off and clears every pixel", () => {
+  test("clear turns the transform off, clears every pixel and puts the transform back", () => {
     const { canvas, renderer, calls } = setup();
     canvas.width = 640;
     canvas.height = 480;
     CanvasRenderer.clear(renderer);
-    assert.deepEqual(calls, [
-      ["setTransform", 1, 0, 0, 1, 0, 0],
-      ["clearRect", 0, 0, 640, 480],
-    ]);
+    assert.deepEqual(calls, [["save"], ["setTransform", 1, 0, 0, 1, 0, 0], ["clearRect", 0, 0, 640, 480], ["restore"]]);
   });
 
-  test("fillScreen turns the transform off and paints every pixel", () => {
+  test("fillScreen turns the transform off, paints every pixel and puts the transform back", () => {
     const { canvas, renderer, calls } = setup();
     canvas.width = 640;
     canvas.height = 480;
     CanvasRenderer.fillScreen(renderer, "navy");
     assert.deepEqual(calls, [
+      ["save"],
       ["setTransform", 1, 0, 0, 1, 0, 0],
       ["fillStyle =", "navy"],
       ["fillRect", 0, 0, 640, 480],
+      ["restore"],
     ]);
   });
 

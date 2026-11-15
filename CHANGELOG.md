@@ -9,6 +9,11 @@ date, and start a new empty **Unreleased** above it.
 
 ## [Unreleased]
 
+### Fixed
+
+- `CanvasRenderer.clear` and `CanvasRenderer.fillScreen` put the camera back afterwards, so they can be called after
+  `setCamera` without the next drawing landing in screen pixels.
+
 ## [0.4.0] - 2026-11-13
 
 ### Added

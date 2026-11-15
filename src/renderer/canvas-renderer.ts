@@ -81,15 +81,19 @@ export function resize(renderer: CanvasRenderer, size: Vec2.Vec2): void {
 
 export function clear(renderer: CanvasRenderer): void {
   const { canvas, context } = renderer;
+  context.save();
   context.setTransform(1, 0, 0, 1, 0, 0);
   context.clearRect(0, 0, canvas.width, canvas.height);
+  context.restore();
 }
 
 export function fillScreen(renderer: CanvasRenderer, color: string): void {
   const { canvas, context } = renderer;
+  context.save();
   context.setTransform(1, 0, 0, 1, 0, 0);
   context.fillStyle = color;
   context.fillRect(0, 0, canvas.width, canvas.height);
+  context.restore();
 }
 
 export function setCamera(renderer: CanvasRenderer, camera: Camera.Camera): void {
